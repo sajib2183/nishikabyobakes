@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নিশি "কাব্য" বেকস - প্রিমিয়াম হোমমেড বেকারি</title>
+    <link rel="icon" href="pimg/logo/logo.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === গ্লোবাল স্টাইল === */
+        :root {
+            --primary: #FFD700; /* গোল্ডেন */
+            --secondary: #7A1321; /* ডিপ রেড */
+            --dark: #182C4A; /* ডার্ক ব্লু */
+            --light: #FFFFFF; /* সাদা */
+            --gray: #f5f5f5;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #f1f1f1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* === হেডার স্টাইল === */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode header {
+            background-color: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            
+            width: 80px;       /* আপনি আপনার প্রয়োজন অনুযায়ী মাপ দিন */
+            height: 80px;
+            border-radius: 50%; /* এটিই লোগোটিকে গোল করে */
+            object-fit: cover;  /* ছবিটি সঠিকভাবে ফিট করার জন্য */
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        body.dark-mode .logo-text {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.dark-mode nav ul li a {
+            color: #f1f1f1;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+
+        body.dark-mode .mobile-menu-btn {
+            color: var(--primary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--secondary);
+            margin-left: 20px;
+        }
+
+        body.dark-mode .theme-toggle {
+            color: var(--primary);
+        }
+
+        /* === হিরো সেকশন === */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pimg/product101.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .btn {
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* === এবাউট সেকশন === */
+        .about {
+            background-color: var(--gray);
+        }
+
+        body.dark-mode .about {
+            background-color: #1e1e1e;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        body.dark-mode .about-text h3 {
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        /* === প্রোডাক্টস সেকশন === */
+        .products {
+            background-color: var(--light);
+        }
+
+        body.dark-mode .products {
+            background-color: #121212;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .product-card {
+            background: #1e1e1e;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        body.dark-mode .product-info h3 {
+            color: var(--primary);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        /* === টেস্টিমোনিয়ালস সেকশন === */
+        .testimonials {
+            background: linear-gradient(rgba(122, 19, 33, 0.8), rgba(122, 19, 33, 0.8)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .testimonials .section-title {
+            color: white;
+        }
+
+        .testimonials .section-title::after {
+            background: var(--primary);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        /* === কন্টাক্ট সেকশন === */
+        .contact {
+            background-color: var(--gray);
+        }
+
+        body.dark-mode .contact {
+            background-color: #1e1e1e;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        body.dark-mode .contact-info h3 {
+            color: var(--primary);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .contact-form input,
+        body.dark-mode .contact-form textarea {
+            background-color: #333;
+            border-color: #444;
+            color: white;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* === ফুটার === */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: #333;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* === অ্যানিমেশন === */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === রেস্পন্সিভ স্টাইল === */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: var(--transition);
+            }
+
+            body.dark-mode nav ul {
+                background: #1e1e1e;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    
+    /* === নতুন স্লাইডার স্টাইল === */
+    .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    .slider-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .slide.active {
+        opacity: 1;
+    }
+    
+    .slide-content {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: white;
+        width: 80%;
+        max-width: 800px;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 30px;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+    }
+    
+    .slide-nav {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
+    
+    .slide-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .slide-dot.active {
+        background: var(--primary);
+        transform: scale(1.2);
+    }
+    
+    .slide-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2.5rem;
+        color: white;
+        cursor: pointer;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.3);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .slide-arrow:hover {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .prev {
+        left: 30px;
+    }
+    
+    .next {
+        right: 30px;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- লোডিং স্ক্রিন -->
+    <div class="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center; z-index: 9999;">
+        <div style="text-align: center;">
+            <div style="width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid #7A1321; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+            <h2 style="color: #7A1321;">নিশি "কাব্য" বেকস</h2>
+            <p style="margin-top: 10px;">লোড হচ্ছে...</p>
+        </div>
+    </div>
+
+    <!-- হেডার -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="pimg/logo/logo.jpg" alt="লোগো">
+                <!--<span class="logo-text">নিশি "কাব্য" বেকস</span>-->
+            </div>
+            
+            <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul id="navMenu">
+                    <li><a href="#home">হোম</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61568903626718">আমাদের সম্পর্কে</a></li>
+                    <li><a href="#products">পণ্য</a></li>
+                    <li><a href="#testimonials">পর্যালোচনা</a></li>
+                    <li><a href="#contact">যোগাযোগ</a></li>
+                </ul>
+                
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- হিরো সেকশন -->
+    <div class="hero-slider" id="home">
+    <div class="slider-container">
+        <!-- স্লাইড ১ -->
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pimg/product89.jpg');">
+            <div class="slide-content">
+                <h1>প্রিমিয়াম হোমমেড বেকড পণ্য</h1>
+                <p>প্রতিটি কামড়ে স্বাদের বিশুদ্ধতা। আমাদের হাতে তৈরি বিশেষ রেসিপি...</p>
+                <a href="#products" class="btn">আমাদের পণ্য দেখুন</a>
+            </div>
+        </div>
+        
+        <!-- স্লাইড ২ -->
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pimg/product57.jpg');">
+            <div class="slide-content">
+                <h1>তাজা উপাদানে তৈরি</h1>
+                <p>আমরা শুধুমাত্র উচ্চমানের, তাজা উপাদান ব্যবহার করি...</p>
+                <a href="https://www.facebook.com/profile.php?id=61568903626718" class="btn">আমাদের সম্পর্কে জানুন</a>
+            </div>
+        </div>
+        
+        <div class="slide-arrow prev" onclick="prevSlide()">&#10094;</div>
+        <div class="slide-arrow next" onclick="nextSlide()">&#10095;</div>
+        
+        <div class="slide-nav">
+            <div class="slide-dot active" onclick="goToSlide(0)"></div>
+            <div class="slide-dot" onclick="goToSlide(1)"></div>
+        </div>
+    </div>
+</div>  
+
+    <!-- এবাউট সেকশন -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title" href="https://www.facebook.com/profile.php?id=61568903626718">আমাদের গল্প</h2>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="pimg/product pro.jpeg" alt="বেকারি সম্পর্কে">
+                </div>
+                
+                <div class="about-text">
+                    <h3>আমাদের স্বাদ আপনার জন্য</h3>
+                    <p>২০২৪ সাল থেকে আমরা তৈরি করে আসছি উচ্চমানের হোমমেড বেকড পণ্য। নিশি "কাব্য" বেকস শুরু হয়েছিল একটি ছোট রান্নাঘর থেকে, যেখানে নিশি তার পরিবারের জন্য ছোট ছোট কেক বানাতেন। আজ আমরা একটি পূর্ণাঙ্গ বেকারি হিসেবে প্রতিষ্ঠিত।</p>
+                    <p>আমরা শুধুমাত্র সর্বোচ্চ মানের উপাদান ব্যবহার করি এবং প্রতিটি পণ্য বিশেষ যত্ন সহকারে তৈরি করি। আমাদের বিশেষত্ব হলো ঐতিহ্যবাহী রেসিপির সাথে আধুনিক টুইস্ট যোগ করা।</p>
+                    <a href="https://www.facebook.com/profile.php?id=61568903626718" class="btn">আমাদের সাথে যোগাযোগ করুন</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- প্রোডাক্টস সেকশন -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title" href="https://www.facebook.com/profile.php?id=61568903626718">আমাদের পণ্য</h2>
+            
+            <div class="products-grid">
+                <!-- প্রোডাক্ট ১ -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="pimg/product1.jpg" alt="চকোলেট কেক">
+                    </div>
+                    <div class="product-info">
+                        <h3>চকোলেট ফ্যান্টাসি কেক</h3>
+                        <div class="product-price">৳800 - ৳1200</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>সমৃদ্ধ চকোলেট গ্যানাচ এবং তাজা বেরি দিয়ে সজ্জিত</p>
+                        <a href="https://www.facebook.com/profile.php?id=61568903626718" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+                    </div>
+                </div>
+                
+                <!-- প্রোডাক্ট ২ -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="pimg/product2.jpg" alt="ভ্যানিলা কাপকেক">
+                    </div>
+                    <div class="product-info">
+                        <h3>ভ্যানিলা ড্রিম কাপকেক</h3>
+                        <div class="product-price">৳500 (৬ পিস)</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>মাখন সমৃদ্ধ ভ্যানিলা কাপকেক সাথে ক্রিমি ফ্রস্টিং</p>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+                    </div>
+                </div>
+                
+                <!-- প্রোডাক্ট ৩ -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="pimg/product4.jpg" alt="রেড ভেলভেট কেক">
+                    </div>
+                    <div class="product-info">
+                        <h3>রেড ভেলভেট কেক</h3>
+                        <div class="product-price">৳900 - ৳1500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p>ক্লাসিক রেড ভেলভেট কেক ক্রিম চিজ ফ্রস্টিং সহ</p>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+                    </div>
+                </div>
+                
+                <!-- প্রোডাক্ট ৪ -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="pimg/product5.jpg" alt="ফ্রেশ ব্রেড">
+                    </div>
+                    <div class="product-info">
+                        <h3>ফ্রেশ সৌর রুটি</h3>
+                        <div class="product-price">৳300 - ৳500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+                    </div>
+                </div>
+                <!-- প্রোডাক্ট ১ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product6.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product7.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product8.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product9.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product10.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product11.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৭ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product12.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৮ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product13.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৯ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product14.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১০ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product15.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১১ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product16.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১২ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product17.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১৩ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product18.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১৪ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product19.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১৫ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product20.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১৬ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product21.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১৭ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product22.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১৮ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product23.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ১৯ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product24.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২০ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product25.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২১ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product26.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২২ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product27.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২৩ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product28.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২৪ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product29.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২৫ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product30.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২৬ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product31.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২৭ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product32.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২৮ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product33.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ২৯ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product34.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩০ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product35.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩১ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product36.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩২ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product37.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩৩ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product38.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩৪ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product39.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩৫ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product39.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩৬ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product40.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩৭ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product41.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩৮ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product42.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৩৯ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product43.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪০ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product44.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪১ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product45.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪২ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product46.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪৩ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product47.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪৪ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product48.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪৫ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product49.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪৬ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product50.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪৭ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product51.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪৮ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product52.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৪৯ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product53.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫০ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product54.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫১ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product55.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫২ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product56.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫৩ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product57.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫৪ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product58.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫৫ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product59.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫৬ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product60.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫৭ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product61.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫৮ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product62.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৫৯ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product63.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬০ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product64.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬১ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product65.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬২ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product66.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬৩ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product67.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬৪ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product68.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬৫ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product69.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬৬ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product70.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬৭ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product71.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬৮ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product72.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+
+<!-- প্রোডাক্ট ৬৯ -->
+<div class="product-card">
+    <div class="product-img">
+        <img src="pimg/product73.jpg" alt="ফ্রেশ ব্রেড">
+    </div>
+    <div class="product-info">
+        <h3>ফ্রেশ সৌর রুটি</h3>
+        <div class="product-price">৳300 - ৳500</div>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>প্রতিদিন সকালে তাজা বেকড সৌর রুটি</p>
+        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">অর্ডার করুন</a>
+    </div>
+</div>
+    </section>
+
+
+    <!-- টেস্টিমোনিয়ালস সেকশন -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">গ্রাহকদের মতামত</h2>
+            
+            <div class="testimonial-slider">
+                <!-- টেস্টিমোনিয়াল ১ -->
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "নিশি "কাব্য" বেকসের চকোলেট কেক আমার জন্মদিন পার্টিতে সবচেয়ে বেশি প্রশংসা পেয়েছে! প্রতিটি কামড়ে চকোলেটের সমৃদ্ধ স্বাদ। নিঃসন্দেহে সেরা বেকারি!"
+                    </div>
+                    <div class="testimonial-author">- রিয়া আহমেদ</div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- টেস্টিমোনিয়াল ২ -->
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "আমি নিয়মিত তাদের কাপকেক অর্ডার করি। প্রতিবারই তাজা এবং নিখুঁত স্বাদ। বিশেষ করে রেড ভেলভেট কাপকেক আমার প্রিয়!"
+                    </div>
+                    <div class="testimonial-author">- আরমান খান</div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- কন্টাক্ট সেকশন -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">যোগাযোগ করুন</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 href="https://www.facebook.com/profile.php?id=61568903626718">আমাদের সাথে যোগাযোগ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ১২৩ বেকারি স্ট্রিট, ঢাকা</p>
+                    <p><i class="fas fa-phone"></i> +880 1711 123456</p>
+                    <p><i class="fas fa-envelope"></i> info@nishikabyobakes.com</p>
+                    <p><i class="fas fa-clock"></i> খোলার সময়: সকাল ৮টা - রাত ১০টা</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">আপনার নাম</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">ইমেইল</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">ফোন নম্বর</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">বার্তা</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">বার্তা পাঠান</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ফুটার -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>নিশি "কাব্য" বেকস</h3>
+                    <p>প্রতিটি কামড়ে স্বাদের বিশুদ্ধতা। হোমমেড বেকড পণ্যের জন্য আপনার বিশ্বস্ত ঠিকানা।</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>লিংক</h3>
+                    <ul>
+                        <li><a href="#home">হোম</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61568903626718">আমাদের সম্পর্কে</a></li>
+                        <li><a href="#products">পণ্য</a></li>
+                        <li><a href="#testimonials">পর্যালোচনা</a></li>
+                        <li><a href="#contact">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>পণ্য</h3>
+                    <ul>
+                        <li><a href="#">কেক</a></li>
+                        <li><a href="#">কাপকেক</a></li>
+                        <li><a href="#">কুকিজ</a></li>
+                        <li><a href="#">পেস্ট্রি</a></li>
+                        <li><a href="#">ব্রেড</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>যোগাযোগ</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> ক্যান্টনমেন্ট,কুমিল্লা</li>
+                        <li><i class="fas fa-phone"></i> +8801820918996</li>
+                        <li><i class="fas fa-envelope"></i> nishikabbobecks@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; ২০২৪ নিশি "কাব্য" বেকস। সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- জাভাস্ক্রিপ্ট -->
+    <script>
+        // DOM লোড হওয়ার পর
+        document.addEventListener('DOMContentLoaded', function() {
+            // লোডার লুকানো
+            setTimeout(function() {
+                document.querySelector('.loader').style.display = 'none';
+            }, 1500);
+            
+            // থিম টগল বাটন
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                // আইকন পরিবর্তন
+                const icon = this.querySelector('i');
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            });
+            
+            // মোবাইল মেনু টগল
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                // আইকন পরিবর্তন
+                const icon = this.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // নেভিগেশন লিংক ক্লিক করলে মেনু বন্ধ করা
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                });
+            });
+            
+            // ফর্ম সাবমিশন
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('আপনার বার্তা সফলভাবে পাঠানো হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।');
+                this.reset();
+            });
+            
+            // স্ক্রল এনিমেশন
+            const sections = document.querySelectorAll('section');
+            window.addEventListener('scroll', function() {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight - 100) {
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // প্রাথমিকভাবে সেকশন লুকানো
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // হিরো সেকশন দেখা যাচ্ছে কিনা তা পরীক্ষা করা
+            const heroSection = document.querySelector('.hero');
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            heroObserver.observe(heroSection);
+        });
+        
+        // স্পিন অ্যানিমেশন
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    <script>
+        // === নতুন স্লাইডার জাভাস্ক্রিপ্ট ===
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slide-dot');
+        const slideInterval = 5000; // 5 সেকেন্ড পর অটো পরিবর্তন
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+            resetInterval();
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+            resetInterval();
+        }
+        
+        function goToSlide(index) {
+            showSlide(index);
+            resetInterval();
+        }
+        
+        let slideTimer = setInterval(nextSlide, slideInterval);
+        
+        function resetInterval() {
+            clearInterval(slideTimer);
+            slideTimer = setInterval(nextSlide, slideInterval);
+        }
+        
+        // টাচ সাপোর্ট (মোবাইলের জন্য)
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.querySelector('.slider-container').addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        document.querySelector('.slider-container').addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }
+    </script>
+</body>
+</html>
